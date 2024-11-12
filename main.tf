@@ -9,7 +9,7 @@ resource "aws_default_vpc" "default" {
   tags = {
     Name = "Default VPC"
   }
-
+}
 
 resource "aws_instance" "terraform-cloud-demo-server"{
 ami = var.ami
