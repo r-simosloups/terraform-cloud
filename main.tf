@@ -5,6 +5,11 @@ variable "access_key" {}
 variable "secret_key" {}
 #variable "subnet_id" {}
 
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
+
 
 resource "aws_instance" "terraform-cloud-demo-server"{
 ami = var.ami
@@ -13,4 +18,6 @@ instance_type = var.instance_type
 tags = {
 Name= "terraform-cloud-demo-server"
 }
+
+depends_on = [ aws_default_vpc.default ]
 }
